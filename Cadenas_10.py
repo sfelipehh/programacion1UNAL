@@ -17,17 +17,24 @@ def contar_ocurrencias(chr: str, string: str):
 
 
 """
+74.
+"""
+
+
+def invertir_strR(string: str):
+    if (string == ""):
+        return ""
+    return invetir_strR(string[1:]) + string[0]
+
+
+"""
 75 Desarrollar un algoritmo que determine si una cadena de caracteres es pal ́ındrome. Una cadena
 se dice pal ́ındrome si al invertirla es igual a ella misma.
 """
 
 
-def es_cadena_palindromeR(string: str):
-    if (string == ""):
-        return True
-    if (string[0] == string[-1]):
-        return True and es_cadena_palindromeR(string[1:-1])
-    return False
+def es_cadena_palindrome(string: str):
+    return string == invetir_strR(string)
 
 
 """
@@ -45,7 +52,7 @@ def elimina_espaciosR(string: str):
 
 
 def es_frase_palindrome(frase: str):
-    return es_cadena_palindromeR(elimina_espaciosR(frase))
+    return es_cadena_palindrome(elimina_espaciosR(frase))
 
 
 """
