@@ -27,8 +27,7 @@ def es_cadena_palindromeR(string: str):
         return True
     if (string[0] == string[-1]):
         return True and es_cadena_palindromeR(string[1:-1])
-    else:
-        return False
+    return False
 
 
 """
