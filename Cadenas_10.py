@@ -15,6 +15,16 @@ def contar_ocurrencias(chr: str, string: str):
         return 1 + contar_ocurrencias(chr, string[1:])
     return contar_ocurrencias(chr, string[1:])
 
+"""
+72.
+"""
+def str_contenida(cad,sub):
+    if (cad == "" or len(cad) < len(sub)):
+        return False
+    if (cad[0] == sub[0]):
+        return cad[1:len(sub)]
+    return str_contenida(cad[1:],sub)
+
 
 """
 74.
