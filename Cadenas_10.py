@@ -8,44 +8,61 @@ ocurrencias de dicho car ́acter en una cadena de caracteres.
 """
 
 
-def contar_ocurrencias(chr: str, string: str):
+def contar_ocurrenciasR(chr: str, string: str):
     if (string == ""):
         return 0
     if (string[0] == chr):
-        return 1 + contar_ocurrencias(chr, string[1:])
-    return contar_ocurrencias(chr, string[1:])
+        return 1 + contar_ocurrenciasR(chr, string[1:])
+    return contar_ocurrenciasR(chr, string[1:])
 
 """
-72.
+72. Desarrollar un algoritmo que reciba como entrada dos cadenas y determine si la primera es
+subcadena de la segunda. (No se deben usar operaciones de subcadenas propias del lenguaje
+de programaci ́on).
 """
-def str_contenida(cad,sub):
+def str_contenida(sub: str,cad: str):
     if (cad == "" or len(cad) < len(sub)):
         return False
-    if (cad[0] == sub[0]):
-        return cad[1:len(sub)]
-    return str_contenida(cad[1:],sub)
-
+    if (sub[0] == cad[0]):
+        return sub == cad[:len(sub)]
+    return str_contenida(sub,cad[1:])
 
 """
-74.
+73. Desarrollar un algoritmo que reciba dos cadenas de caracteres y determine si la primera est ́a
+incluida en la segunda. Se dice que una cadena est ́a incluida en otra, si todos los caracteres
+(con repeticiones) de la cadena est ́a en la segunda cadena sin tener en cuenta el orden de los
+caracteres.
+"""
+
+def caracteres_incluidosR(sub: str, cad: str, i=0):
+    if (i == len(sub)):
+        return True
+    return (contar_ocurrenciasR(sub[i], sub) <= contar_ocurrenciasR(sub[i], cad)) and caracteres_incluidosR(sub, cad, i + 1)
+
+"""
+74. Desarrollar un algoritmo que invierta una cadena de caracteres.
 """
 
 
 def invertir_strR(string: str):
     if (string == ""):
         return ""
-    return invetir_strR(string[1:]) + string[0]
-
+    return invertir_strR(string[1:]) + string[0]
 
 """
-75 Desarrollar un algoritmo que determine si una cadena de caracteres es pal ́ındrome. Una cadena
+75. Desarrollar un algoritmo que determine si una cadena de caracteres es pal ́ındrome. Una cadena
 se dice pal ́ındrome si al invertirla es igual a ella misma.
 """
 
 
 def es_cadena_palindrome(string: str):
-    return string == invetir_strR(string)
+    return string == invertir_strR(string)
 
+def es_cadena_palindromeR(string: str, i=1):
+    print(i)
+    if (string == ""):
+        return True
+    return (string[0] == string[-1]) and es_cadena_palindromeR(string[1:-1],i+1)
 
 """
 76. Desarrollar un algoritmo que determina si una cadena de caracteres es frase pal ́ındrome. Una
